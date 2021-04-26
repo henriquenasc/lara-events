@@ -9,9 +9,16 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::all()->sortByDesc('created_at');
 
-        return view('welcome', ['events' => $events]);
+        $search = request('search');
+        if($search) {
+            $events = Event::where([
+                ['title', 'like', '%'.$search.'%']
+            ])->get();
+        } else {
+            $events = Event::all()->sortByDesc('created_at');
+        }
+        return view('welcome', ['events' => $events, 'search' => $search]);
     }
 
     public function create()
