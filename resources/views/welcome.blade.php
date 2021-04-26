@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Home page')
+@section('title', 'Dashboard page')
 
 @section('content')
 <div id="search-container" class="col-md-12">
